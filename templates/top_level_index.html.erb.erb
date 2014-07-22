@@ -32,13 +32,13 @@
               </tr>
             </thead>
             <tbody>
-              <%% <%= "@#{model_instances}" %>.each do |<%= model_instances.singularize %>| %>
+              <%% <%= "@#{model_instance.pluralize}" %>.each do |<%= model_instance %>| %>
               <tr>
               <%- model_attributes.each do |name| -%>
-                <td><%%= <%=model_instances.singularize %>.<%= name %> %></td>
+                <td><%%= <%=model_instance %>.<%= name %> %></td>
               <%- end -%>
                 <td>
-                  <%%= link_to <%= "#{namespace}_#{model_class}".underscore %>_path(<%= model_instances.singularize %>) do %>
+                  <%%= link_to <%= "#{namespace}_#{model_class}".underscore %>_path(<%= model_instance %>) do %>
                     <i class="fa fa-info-circle fa-lg"></i>
                   <%% end %>
                 </td>
