@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Event type:</strong>
+  <%= @activity.event_type %>
+</p>
+
+<p>
+  <strong>Actable:</strong>
+  <%= @activity.actable_id %>
+</p>
+
+<p>
+  <strong>Actable type:</strong>
+  <%= @activity.actable_type %>
+</p>
+
+<p>
+  <strong>Performable:</strong>
+  <%= @activity.performable_id %>
+</p>
+
+<p>
+  <strong>Performable type:</strong>
+  <%= @activity.performable_type %>
+</p>
+
+<p>
+  <strong>Recorded at:</strong>
+  <%= @activity.recorded_at %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @activity.created_at %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @activity.updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_activity_path(@activity) %> |
+<%= link_to 'Back', activities_path %>

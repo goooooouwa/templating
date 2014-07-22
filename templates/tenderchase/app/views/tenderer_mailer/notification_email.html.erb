@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Hi, <%= @tenderer.contact.first_name %></h1>
+    <p>
+    The tender <%= @tenderer.tender.name %> you're following has new documents available.
+    </p>
+    <p>
+    You can download the new documents here: <%= package_download_url(@tenderer.package.hash_id, {tenderer_hash_id: @tenderer.hash_id}) %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

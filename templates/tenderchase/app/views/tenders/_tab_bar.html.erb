@@ -1,0 +1,9 @@
+<ul class="nav nav-tabs">
+  <li class="<%= 'active' if (active_tab == 'Info') %>"><%= link_to 'Info', tender_path(tender) %></li>
+  <li class="<%= 'active' if (active_tab == 'Trades') %>"><%= link_to 'Trades', tender_trades_path(tender) %></li>
+  <li class="<%= 'active' if (active_tab == 'Tenderers') %>"><%= link_to 'Tenderers', tender_tenderers_path(tender) %></li>
+  <li class="<%= 'active' if (active_tab == 'Documents') %>"><%= link_to 'Documents', tender_documents_path(tender) %></li>
+  <li class="<%= 'active' if (active_tab == 'Packages') %>">
+    <%= link_to tender_packages_path(tender) do %> Packages<% end %>
+  </li>
+</ul>

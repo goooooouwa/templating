@@ -1,0 +1,132 @@
+<div id="content" class="container-fluid">
+  <div class="row">
+    <div class="col-xs-3 col-xs-offset-1" id="myScrollspy">
+      <ul class="nav nav-pills nav-stacked" data-spy="affix">
+        <li><a href="#window">Top</a></li>
+        <li><a href="#basic">Basic</a></li>
+        <li><a href="#status">Status</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="#address">Address</a></li>
+        <li><a href="#extra">Extra</a></li>
+        <li><a href="#end">End</a></li>
+      </ul>
+    </div>
+    <div class="col-xs-4">
+      <%= form_for @company, :html => { :class => 'form-horizontal' } do |f| %>
+        <% if @company.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@company.errors.count, "error") %> prohibited this company from being saved:</h2>
+
+            <ul>
+            <% @company.errors.full_messages.each do |msg| %>
+              <li><%= msg %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div id="basic">
+          <div class="form-group">
+            <h1><small>Basic</small></h1>
+          </div>
+          <div class="form-group">
+            <%= f.label :name, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :name, :class => 'form-control' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <h1 class="page-header"></h1>
+          </div>
+        </div>
+
+        <div id="status">
+          <div class="form-group">
+            <h1><small>Status</small></h1>
+          </div>
+          <div class="form-group">
+            <div class="checkbox">
+              <%= f.label :active %>
+              <%= f.check_box :active %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :notes, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_area :notes, :class => 'form-control' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="checkbox">
+              <%= f.label :problematic %>
+              <%= f.check_box :problematic %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :review, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_area :review, :class => 'form-control' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <h1 class="page-header"></h1>
+          </div>
+        </div>
+
+        <div id="contact">
+          <div class="form-group">
+            <h1><small>Contact</small></h1>
+          </div>
+          <div class="form-group">
+            <%= f.label :phone, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :phone, :class => 'form-control' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :mobile, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :mobile, :class => 'form-control' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.label :fax, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :fax, :class => 'form-control' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <h1 class="page-header"></h1>
+          </div>
+        </div>
+
+        <div id="address" ng-controller="AddressSelectController">
+          <div class="form-group">
+            <h1><small>Address</small></h1>
+          </div>
+          <%= render partial: 'suburbs/address_select', locals: { f: f , addressable: @company } %>
+          <div class="form-group">
+            <h1 class="page-header"></h1>
+          </div>
+        </div>
+
+        <div id="extra">
+          <div class="form-group">
+            <h1><small>Extra</small></h1>
+          </div>
+          <div class="form-group">
+            <%= f.label :external_db_id, :class => 'control-label' %>
+            <div class="controls">
+              <%= f.text_field :external_db_id, :class => 'form-control' %>
+            </div>
+          </div>
+          <div class="form-group">
+            <h1 class="page-header"></h1>
+          </div>
+        </div>
+
+        <%= f.submit nil, :class => 'btn btn-primary' %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div ng-controller="AddressSelectController">
+  <div class="form-group">
+    <%= f.label :address_line, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :address_line, :class => 'form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :state_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.collection_select(:state_id, State.all.order(:abbreviation), :id, :abbreviation, {}, { :class => 'form-control', "ng-model" => "addressable.state_id", "ng-init" => "addressable.state_id = '#{ addressable.state_id || State.first.id }';" ,"ng-change" => "stateSelectionChanged()" }) %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :suburb_id, :class => 'control-label' %>
+    <div class="controls">
+      <select class="form-control" id="<%= addressable.class.name.downcase %>_suburb_id" name="<%= addressable.class.name.downcase %>[suburb_id]" ng-model="addressable.suburb.id" ng-init="addressable.suburb = <%= addressable.suburb_id ? addressable.suburb.to_json : State.first.suburbs.order(:name).first.to_json %>;" ng-change="suburbSelectionChanged()">
+        <option value="">-- Select Suburb --</option>
+        <option value="{{ suburb.id }}" ng-selected="suburb.selected" ng-repeat="suburb in suburbs">{{ suburb.name }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :postcode, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :postcode, :class => 'form-control', "ng-model" => "addressable.suburb.postcode" %>
+    </div>
+  </div>
+</div>

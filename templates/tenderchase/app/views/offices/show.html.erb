@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @office.active %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @office.name %>
+</p>
+
+<p>
+  <strong>Address line:</strong>
+  <%= @office.address_line %>
+</p>
+
+<p>
+  <strong>Suburb:</strong>
+  <%= @office.suburb.name %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @office.state.name %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @office.latitude %>
+</p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @office.longitude %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @office.email %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @office.phone %>
+</p>
+
+<p>
+  <strong>Fax:</strong>
+  <%= @office.fax %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @office.notes %>
+</p>
+
+<%= link_to 'Edit', edit_office_path(@office) %> |
+<%= link_to 'Back', offices_path %>

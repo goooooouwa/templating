@@ -1,0 +1,84 @@
+<div class="container-fluid">
+  <div id="search-bar" class="row" ng-controller="CompaniesSearchBarController">
+    <div class="col-lg-6">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search Companies" ng-model="query.text">
+        <span class="input-group-btn">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            <span class="caret"></span>
+          </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <form class="form-horizontal tc-dropdown-form" role="form" ng-click="preventClose($event)">
+              <div class="form-group">
+                <label for="query-trade" class="col-sm-2">Within</label>
+                <div class="col-sm-10">
+                  <select id="query-trade" class="form-control" ng-model="query.trade" ng-options="trade.name for trade in trades">
+                    <option value="">All trades</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="query-state" class="col-sm-2">From</label>
+                <div class="col-sm-10">
+                  <select id="query-state" class="form-control" ng-model="query.state" ng-options="state.abbreviation for state in states">
+                    <option value="">All States</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="query-text" class="col-sm-12">Has the words:</label>
+                <div class="col-sm-12">
+                  <input type="text" class="form-control" id="query-text" ng-model="query.text">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="query-services" class="col-sm-12">services</label>
+                <div class="col-sm-12">
+                  <select multiple id="query-services" class="form-control" ng-model="query.services" ng-options="service.name for service in services">
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" ng-model="query.excludeBadReputation"> Exclude bad reputation
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-12">
+                  <div class="checkbox">
+                    <label>
+                      <input type="checkbox" ng-model="query.includeInactive"> Include inactive
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-6">
+                  <button type="submit" class="btn btn-primary" ng-click="search(closeSearchForm=true)"><i class="fa fa-search"></i></button>
+                </div>
+                <div class="col-sm-6">
+                  <a href="#" class="pull-right" ng-click="cleanFilters($event)"><i class="fa fa-times"></i> clean filters</a>
+                </div>
+              </div>
+            </form>
+          </div>
+          <button type="submit" class="btn btn-primary" ng-click="search()"><i class="fa fa-search"></i></button>
+        </span>
+      </div><!-- /input-group -->
+      <div class="well well-sm">
+        <p>
+        <span ng-class="{ hidden: !query.text.length }">Has word: <span class="badge">{{ query.text }}</span>, </span>
+        <span ng-class="{ hidden: !query.trade.name.length }">Trade: <span class="badge">{{ query.trade.name }}</span>, </span>
+        <span ng-class="{ hidden: !query.state.abbreviation.length }">State: <span class="badge">{{ query.state.abbreviation }}</span>, </span>
+        <span ng-class="{ hidden: !query.services.length }">Service: <span ng-repeat="service in query.services"><span class="badge">{{ service.name }}</span></span>, </span>
+        <span ng-class="{ hidden: !query.excludeBadReputation }">Reputation: <span class="badge">Good</span>, </span>
+        <span ng-class="{ hidden: query.includeInactive }">Status: <span class="badge">Active</span></span>
+        </p>
+      </div>
+    </div><!-- /.col-lg-6 -->
+  </div>
+</div>

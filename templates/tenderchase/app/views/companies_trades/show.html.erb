@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Company:</strong>
+  <%= @companies_trade.company %>
+</p>
+
+<p>
+  <strong>Trade:</strong>
+  <%= @companies_trade.trade %>
+</p>
+
+<p>
+  <strong>Created at:</strong>
+  <%= @companies_trade.created_at %>
+</p>
+
+<p>
+  <strong>Updated at:</strong>
+  <%= @companies_trade.updated_at %>
+</p>
+
+<%= link_to 'Edit', edit_companies_trade_path(@companies_trade) %> |
+<%= link_to 'Back', companies_trades_path %>

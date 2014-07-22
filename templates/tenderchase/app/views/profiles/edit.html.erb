@@ -1,0 +1,26 @@
+<%- model_class = Profile -%>
+
+<% content_for :header do %>
+  <%= render partial: "layouts/header", locals: {active_tab: model_class} %>
+<% end %>
+
+<% content_for :content do %>
+  <div id="navigation-view">
+    <div id="navigation-bar" class="container-fluid">
+      <div class="row">
+        <div class="col-xs-5">
+          <div class="btn-toolbar pull-left" role="toolbar">
+            <div class="btn-group">
+              <h3 style="margin-top: 11px;">Edit profile</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="content" class="container-fluid">
+      <%= render 'form' %>
+    </div>
+  </div>
+<% end %>
+
+<%= render template: "layouts/app" %>

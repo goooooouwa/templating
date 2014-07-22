@@ -1,0 +1,8 @@
+Notification email from TenderChase
+===============================================
+
+Attention: <%= @tenderer.company.name %>,
+You're invited to tender on <%= @tenderer.tender.name %>. Quote close on <%= @tenderer.tender.closing_at %>. Please reply to this email to quote.
+<%= link_to "Access tender documentation", package_download_url(@tenderer.package.hash_id, {tenderer_hash_id: @tenderer.hash_id}) %>
+If you don't wish to quote this tender, click <%= link_to "here", tenderer_decline_url(@tenderer.hash_id) %>.
+Thanks for joining and have a great day!

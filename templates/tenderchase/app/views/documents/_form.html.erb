@@ -1,0 +1,55 @@
+<%= form_for([@tender, @document], :html => { name: "documentForm" }) do |f| %>
+  <% if @document.errors.any? %>
+    <td>
+      <div id="error_explanation">
+        <h2><%= pluralize(@document.errors.count, "error") %> prohibited this document from being saved:</h2>
+
+        <ul>
+          <% @document.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    </td>
+  <% end %>
+
+  <td>
+    <div class="field">
+      <input type="file" name="file" data-file="document.file">
+    </div>
+    <div class="field">
+      <%= f.hidden_field :path, name: "path", :"ng-model" => "document.path" %>
+    </div>
+  </td>
+  <td>
+    <div class="field">
+      <%= f.hidden_field :tender_id, name: "tender_id", :"ng-model" => "document.tender_id" %>
+    </div>
+    <div class="field">
+      <div class="controls">
+        <select ng-model="selectedDocumentType" ng-options="documentType.name for documentType in documentTypes"></select>
+      </div>
+    </div>
+  </td>
+  <td>
+    <div class="field">
+      <%= f.hidden_field :latest_version, name: "latest_version", :"ng-model" => "document.latest_version" %>
+    </div>
+    <div class="field">
+      <%= f.text_field :description, placeholder: "Description", :"ng-model" => "document.description" %>
+    </div>
+  </td>
+  <td>
+    <div class="field">
+      <span>
+        <%= f.check_box :addendum %>
+      </span>
+      <%= f.label :addendum %>
+    </div>
+  </td>
+<% end %>
+<td>
+  <div class="actions">
+    <%= button_tag "Done", :class => "btn btn-primary", :"ng-click" => "upload(document)" %>
+  </div>
+</td>

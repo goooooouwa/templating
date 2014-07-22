@@ -1,0 +1,30 @@
+<%- model_class = Package -%>
+
+<% content_for :content do %>
+  <div id="custom-view">
+    <h3>Package <%= @package.name %> for <%= @package.tender.name %></h3>
+
+    <ul class="btn-group">
+      <li class="btn">
+        <%= render :partial => 'activities/track_form', locals: {redirect_to: @package.whats_new_share_link, submit: {text: "Download new documents", class: "btn btn-success"}} %>
+      </li>
+      <li class="btn">
+        <%= render :partial => 'activities/track_form', locals: {redirect_to: @package.share_link, submit: {text: "Browse the package", class: "btn btn-default"}} %>
+      </li>
+      <li class="btn">
+        <%= render :partial => 'activities/track_form', locals: {redirect_to: @package.tender.share_link, submit: {text: "Browse all packages", class: "btn btn-default"}} %>
+      </li>
+    </ul>
+
+    <h4>What's New</h4>
+    <ul>
+      <% @package.package_documents.each do |package_document| %>
+        <% if package_document.updated_since_last_publish %>
+          <li><%= package_document.document.filename %></li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= render template: "layouts/app" %>

@@ -1,0 +1,39 @@
+<%- model_class = Trade -%>
+
+<div class="container-fluid" ng-controller="tradesSelectSheetController" ng-init="tender_id = <%= @package.tender_id %>;">
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th></th>
+          <th><%= model_class.human_attribute_name(:name) %></th>
+          <th>
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary" ng-click="add()">Add</button>
+            </div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="{{ trade.selected | active }}" ng-repeat="trade in trades">
+          <td>
+            <input type="checkbox" ng-model="trade.selected" ng-change="tradeSelectionChanged()">
+          </td>
+          <td>{{ trade.name }}</td>
+          <td>
+            <a ng-href="/trades/{{ trade.id }}"><i class="fa fa-info-circle fa-lg"></i></a>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="3">
+            <div class="row">
+              <div class="col-lg-2 col-lg-offset-5">
+                <tc-pagination></tc-pagination>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,16 @@
+<% content_for :window do %>
+  <div id="header">
+    <%= content_for?(:header) ? yield(:header) : yield %>
+  </div>
+  <div id="notification-view">
+    <%= render partial: "layouts/notification" %>
+  </div>
+  <div id="custom-view">
+    <%= content_for?(:content) ? yield(:content) : yield %>
+  </div>
+  <div id="footer">
+    <%= render partial: "layouts/footer" %>
+  </div>
+<% end %>
+
+<%= render template: "layouts/application" %>

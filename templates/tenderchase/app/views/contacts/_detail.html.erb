@@ -1,0 +1,38 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-lg-3">
+        <h4>Contact</h4>
+      </div>
+      <div class="col-lg-3 col-lg-offset-6">
+        <div class="btn-group pull-right">
+          <a class="btn btn-success" href="#" ng-click="call(tenderer)"><i class="fa fa-phone fa-fw"></i> Call</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <ul class="list-group">
+        <li class="list-group-item">
+        <div class="list-group-item-heading">
+          <b>Name</b>
+        </div>
+        <p class="list-group-item-text">{{ tenderer.contact.full_name }}</p>
+        </li>
+        <li class="list-group-item">
+        <div class="list-group-item-heading">
+          <b>Phone</b>
+        </div>
+        <p class="list-group-item-text">{{ tenderer.contact.phone }}</p>
+        </li>
+        <li class="list-group-item">
+        <div class="list-group-item-heading">
+          <b>Email</b>
+        </div>
+        <p class="list-group-item-text">{{ tenderer.contact.email }}</p>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

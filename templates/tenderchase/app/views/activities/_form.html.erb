@@ -1,0 +1,49 @@
+<%= form_for(@activity) do |f| %>
+  <% if @activity.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@activity.errors.count, "error") %> prohibited this activity from being saved:</h2>
+
+      <ul>
+      <% @activity.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :event_type_id %><br>
+    <%= f.text_field :event_type_id %>
+  </div>
+  <div class="field">
+    <%= f.label :actable_id %><br>
+    <%= f.number_field :actable_id %>
+  </div>
+  <div class="field">
+    <%= f.label :actable_type %><br>
+    <%= f.text_field :actable_type %>
+  </div>
+  <div class="field">
+    <%= f.label :performable_id %><br>
+    <%= f.number_field :performable_id %>
+  </div>
+  <div class="field">
+    <%= f.label :performable_type %><br>
+    <%= f.text_field :performable_type %>
+  </div>
+  <div class="field">
+    <%= f.label :recorded_at %><br>
+    <%= f.datetime_select :recorded_at %>
+  </div>
+  <div class="field">
+    <%= f.label :created_at %><br>
+    <%= f.datetime_select :created_at %>
+  </div>
+  <div class="field">
+    <%= f.label :updated_at %><br>
+    <%= f.datetime_select :updated_at %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

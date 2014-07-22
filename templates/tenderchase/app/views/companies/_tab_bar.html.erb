@@ -1,0 +1,5 @@
+<ul class="nav nav-tabs">
+  <li class="<%= 'active' if (active_tab == 'Info') %>"><%= link_to 'Info', company_path(company) %></li>
+  <li class="<%= 'active' if (active_tab == 'Trades') %>"><%= link_to 'Trades', company_trades_path(company) %></li>
+  <li class="<%= 'active' if (active_tab == 'Contacts') %>"><%= link_to 'Contacts', company_contacts_path(company) %></li>
+</ul>

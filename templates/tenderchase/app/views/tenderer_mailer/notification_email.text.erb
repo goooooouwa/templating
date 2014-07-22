@@ -1,0 +1,7 @@
+Notification email from TenderChase
+===============================================
+
+Hi, <%= @tenderer.contact.first_name %>
+The tender <%= @tenderer.tender.name %> you're following has new documents available.
+You can download the new documents here: <%= package_download_url(@tenderer.package.hash_id, {tenderer_hash_id: @tenderer.hash_id}) %>.
+Thanks for joining and have a great day!

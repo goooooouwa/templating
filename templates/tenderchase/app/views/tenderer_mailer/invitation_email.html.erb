@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Attention: <%= @tenderer.company.name %>,</h1>
+    <p>
+    You're invited to tender on <%= @tenderer.tender.name %>. Quote close on <strong><%= @tenderer.tender.closing_at %></strong>. Please reply to this email to quote.
+    </p>
+    <p>
+    <%= link_to "Access tender documentation", package_download_url(@tenderer.package.hash_id, {tenderer_hash_id: @tenderer.hash_id}) %>
+    </p>
+    <p>
+    If you don't wish to quote this tender, click <%= link_to "here", tenderer_decline_url(@tenderer.hash_id) %>.
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
