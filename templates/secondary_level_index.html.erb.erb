@@ -43,8 +43,8 @@
           <table class="table table-hover">
             <thead>
               <tr>
-                <%- model_attributes.each do |name| -%>
-                <th><%%= model_class.human_attribute_name(:<%= name %>) %></th>
+                <%- model_attributes.each do |attribute_name| -%>
+                <th><%%= model_class.human_attribute_name(:<%= attribute_name %>) %></th>
                 <%- end -%>
               </tr>
             </thead>
@@ -52,8 +52,8 @@
               <%% case @parent.class.name when <%= "#{namespace}::#{parent_model_class}" %>.name %>
                 <%% <%= "@#{model_instance.pluralize}" %>.each do |<%= model_instance %>| %>
                 <tr>
-                <%- model_attributes.each do |name| -%>
-                  <td><%%= <%= model_instance %>.<%= name %> %></td>
+                <%- model_attributes.each do |attribute_name| -%>
+                  <td><%%= <%= model_instance %>.<%= attribute_name %> %></td>
                 <%- end -%>
                   <td>
                     <%%= link_to <%= "#{namespace}_#{model_class}".underscore %>_path(<%= model_instance %>) do %>
@@ -65,8 +65,8 @@
               <%% else %>
                 <%% <%= "@#{model_instance.pluralize}" %>.each do |<%= model_instance %>| %>
                 <tr>
-                <%- model_attributes.each do |name| -%>
-                  <td><%%= <%= model_instance %>.<%= name %> %></td>
+                <%- model_attributes.each do |attribute_name| -%>
+                  <td><%%= <%= model_instance %>.<%= attribute_name %> %></td>
                 <%- end -%>
                   <td>
                     <%%= link_to 'Delete', <%= model_instance %>, :method => 'delete', class: "btn btn-danger", title: "Delete <%= model_instance %>", data: { toggle:"tooltip", placement:"bottom" }, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>

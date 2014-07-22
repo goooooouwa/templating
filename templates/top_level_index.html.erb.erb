@@ -26,16 +26,16 @@
           <table class="table table-striped">
             <thead>
               <tr>
-                <%- model_attributes.each do |name| -%>
-                <th><%%= model_class.human_attribute_name(:<%= name %>) %></th>
+                <%- model_attributes.each do |attribute_name| -%>
+                <th><%%= model_class.human_attribute_name(:<%= attribute_name %>) %></th>
                 <%- end -%>
               </tr>
             </thead>
             <tbody>
               <%% <%= "@#{model_instance.pluralize}" %>.each do |<%= model_instance %>| %>
               <tr>
-              <%- model_attributes.each do |name| -%>
-                <td><%%= <%=model_instance %>.<%= name %> %></td>
+              <%- model_attributes.each do |attribute_name| -%>
+                <td><%%= <%=model_instance %>.<%= attribute_name %> %></td>
               <%- end -%>
                 <td>
                   <%%= link_to <%= "#{namespace}_#{model_class}".underscore %>_path(<%= model_instance %>) do %>
