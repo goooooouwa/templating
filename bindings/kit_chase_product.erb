@@ -22,4 +22,28 @@ model_attributes = ["id",
  "created_at",
  "updated_at",
  "identifier"]
+grouped_model_attributes = {
+  "basic" =>
+      ["id",
+     "description",
+     "product_type_id",
+     "product_model_id",
+     "identifier"],
+  "status" =>
+      ["condition_id",
+     "location_id",
+     "next_available_at",
+     "next_maintenance_at",
+     "warranty_expire_at",
+     "acquired_at",
+     "purchase_price",
+     "current_value",
+     "decommissioned_at",
+     "decommission_note",
+     "contact_id",
+     "office_id",
+     "department_id",
+     "created_at",
+     "updated_at"],
+}
 -%>
