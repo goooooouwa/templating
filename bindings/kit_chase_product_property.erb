@@ -5,4 +5,10 @@ parent_model_name_attribute = "identifier"
 model_class = "Property"
 model_instance = "kit_chase_property"
 model_attributes = ["id", "name", "field_type_id", "created_at", "updated_at"]
+grouped_model_attributes = {
+  "basic" =>
+      ["id", "name"],
+  "status" =>
+      ["field_type_id", "created_at", "updated_at"],
+}
 -%>
