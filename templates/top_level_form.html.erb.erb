@@ -1,0 +1,51 @@
+<div id="content" class="container-fluid">
+  <div class="row">
+    <div class="col-xs-3 col-xs-offset-1" id="myScrollspy">
+      <ul class="nav nav-pills nav-stacked" data-spy="affix">
+        <li><a href="#window">Top</a></li>
+        <%- grouped_model_attributes.each do |group_label, attributes| -%>
+        <li><a href="#<%= group_label %>"><%= group_label.capitalize %></a></li>
+        <%- end -%>
+        <li><a href="#end">End</a></li>
+      </ul>
+    </div>
+    <div class="col-xs-4">
+      <%%= form_for <%= "@#{model_instance}" %>, :html => { :class => 'form-horizontal' } do |f| %>
+        <%% if <%= "@#{model_instance}" %>.errors.any? %>
+          <div id="error_explanation">
+            <h2><%%= pluralize(<%= "@#{model_instance}" %>.errors.count, "error") %> prohibited this <%= model_class.humanize %> from being saved:</h2>
+
+            <ul>
+            <%% <%= "@#{model_instance}" %>.errors.full_messages.each do |msg| %>
+              <li><%%= msg %></li>
+            <%% end %>
+            </ul>
+          </div>
+        <%% end %>
+
+        <%- grouped_model_attributes.each do |group_label, attributes| -%>
+        <div id="<%= group_label %>">
+          <div class="form-group">
+            <h1><small><%= group_label.capitalize %></small></h1>
+          </div>
+          <%- attributes.each do |attribute| -%>
+          <div class="form-group">
+            <%%= f.label :<%= attribute %>, :class => 'control-label' %>
+            <div class="controls">
+              <%%= f.text_field :<%= attribute %>, :class => 'form-control' %>
+            </div>
+          </div>
+          <%- end -%>
+          <div class="form-group">
+            <h1 class="page-header"></h1>
+          </div>
+        </div>
+        <%- end -%>
+
+        <div id="end">
+          <%%= f.submit nil, :class => 'btn btn-primary' %>
+        </div>
+      <%% end %>
+    </div>
+  </div>
+</div>
