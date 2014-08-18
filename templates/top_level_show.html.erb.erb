@@ -22,7 +22,7 @@
               <%% end %>
             </div>
             <div class="btn-group">
-              <%%= link_to <%= "#{namespace}_#{model_class}".underscore %>_path(<%= "@#{model_instance}" %>), :method => 'put', title: "Delete <%= model_class.capitalize %>", :data => { toggle:"tooltip", placement:"bottom", :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } do %>
+              <%%= link_to <%= "#{namespace}_#{model_class}".underscore %>_path(<%= "@#{model_instance}" %>), :method => 'delete', title: "Delete <%= model_class.capitalize %>", :data => { toggle:"tooltip", placement:"bottom", :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } do %>
                 <i class="fa fa-trash-o fa-3x"></i>
               <%% end %>
             </div>
