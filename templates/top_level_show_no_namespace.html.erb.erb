@@ -1,0 +1,63 @@
+<%%- model_class = <%= "#{namespace}::#{model_class}" %> -%>
+
+<%% content_for :header do %>
+  <%%= render partial: "layouts/header", locals: {active_tab: model_class} %>
+<%% end %>
+
+<%% content_for :content do %>
+  <div id="navigation-view">
+    <div id="navigation-bar" class="container-fluid">
+      <div class="row">
+        <div class="col-xs-3">
+          <h3 style="margin-top: auto;"><%%= t('.title', :default => model_class.model_name.human.titleize) %></h3>
+        </div>
+        <div class="col-xs-5">
+          <%%= render partial: "tab_bar", locals: {active_tab: 'Info', <%= model_class.underscore %>: <%= "@#{model_instance}" %>} %>
+        </div>
+        <div class="col-xs-4">
+          <div class="btn-toolbar pull-right" role="toolbar">
+            <div class="btn-group">
+              <%%= link_to edit_<%= model_class.underscore %>_path(<%= "@#{model_instance}" %>) do %>
+                <i class="fa fa-pencil-square-o fa-3x"></i>
+              <%% end %>
+            </div>
+            <div class="btn-group">
+              <%%= link_to <%= model_class.underscore %>_path(<%= "@#{model_instance}" %>), :method => 'delete', title: "Delete <%= model_class.capitalize %>", :data => { toggle:"tooltip", placement:"bottom", :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } do %>
+                <i class="fa fa-trash-o fa-3x"></i>
+              <%% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="table-responsive">
+            <table class="table">
+              <tbody>
+                <%- grouped_model_attributes.each do |group_name, attributes| -%>
+                <tr>
+                  <td class="col-md-3">
+                    <h4><%= group_name.capitalize %></h4>
+                  </td>
+                  <td class="col-md=9">
+                    <%- attributes.each do |attribute_name| -%>
+                    <dl>
+                      <dt><strong><%%= model_class.human_attribute_name(:<%= attribute_name %>) %></strong></dt>
+                      <dd><%%= <%= "@#{model_instance}.#{attribute_name}" %> %></dd>
+                    </dl>
+                    <%- end -%>
+                  </td>
+                </tr>
+                <%- end -%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<%% end %>
+
+<%%= render template: "layouts/app" %>
