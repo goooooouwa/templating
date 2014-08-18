@@ -1,0 +1,21 @@
+<%-
+namespace = "ConstrBase"
+model_class = "Profile"
+model_instance = "profile"
+model_attributes = ["id",
+    "user_id",
+    "first_name",
+    "last_name",
+    "created_at",
+    "updated_at"]
+grouped_model_attributes = {
+  "basic" =>
+      ["id",
+      "user_id",
+      "first_name",
+      "last_name"],
+  "status" =>
+      ["created_at",
+       "updated_at"],
+}
+-%>
