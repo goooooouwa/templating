@@ -13,7 +13,7 @@
         </div>
         <div class="col-xs-9">
           <div class="btn-toolbar pull-right" role="toolbar">
-          <%% case <%= "@#{parent_model_class}".underscore %>.class.name when <%= "#{namespace}::#{parent_model_class}" %>.name %>
+          <%% case @parent.class.name when <%= "#{namespace}::#{parent_model_class}" %>.name %>
             <div class="btn-group">
               <%%= link_to t('.cancel', :default => t("helpers.links.cancel")), <%= "#{parent_model_class}_#{model_class.pluralize}_path".underscore %>, :class => 'btn btn-default' %>
             </div>
