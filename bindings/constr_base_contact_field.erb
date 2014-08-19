@@ -1,0 +1,25 @@
+<%-
+namespace = "ConstrBase"
+parent_model_class = "Profile"
+parent_model_name_attribute = "name"
+model_class = "ContactField"
+model_instance = "contact_field"
+model_attributes = ["id",
+    "contactable_id",
+    "contact_field_type_id",
+    "label",
+    "value",
+    "created_at",
+    "updated_at"]
+grouped_model_attributes = {
+  "basic" =>
+      ["id",
+       "contactable_id",
+       "contact_field_type_id"],
+  "status" =>
+      ["label",
+       "value",
+       "created_at",
+       "updated_at"],
+}
+-%>
