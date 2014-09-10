@@ -1,0 +1,10 @@
+<%-
+namespace = "KitChase"
+model_class = "Location"
+model_instance = "kit_chase_location"
+model_attributes = ["id", "address_line", "suburb_id", "postcode", "state_id", "latitude", "longitude", "created_at", "updated_at"]
+grouped_model_attributes = {
+  "basic" => ["id", "address_line", "suburb_id", "postcode", "state_id"],
+  "details" => ["latitude", "longitude", "created_at", "updated_at"],
+}
+-%>
