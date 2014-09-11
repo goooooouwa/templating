@@ -36,7 +36,7 @@
               <%%= f.collection_select(:<%= attribute %>, <%= "#{namespace}/#{/^(\w*)_id$/.match(attribute)[1]}".camelize %>.all, :id, :name, {}, { :class => 'form-control' }) %>
             <%-  elsif attribute =~ /^(\w*)_at$/ -%>
               <%%= f.datetime_local_field :<%= attribute %>, :class => 'form-control' %>
-            <% else %>
+            <%- else -%>
               <%%= f.text_field :<%= attribute %>, :class => 'form-control' %>
             <%- end -%>
             </div>
