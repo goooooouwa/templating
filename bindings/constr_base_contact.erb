@@ -1,0 +1,33 @@
+<%-
+namespace = "ConstrBase"
+parent_model_class = "Company"
+parent_model_name_attribute = "name"
+model_class = "Contact"
+model_instance = "contact"
+model_attributes = ["id",
+                    "active",
+                    "first_name",
+                    "last_name",
+                    "email",
+                    "job_role",
+                    "phone",
+                    "notes",
+                    "external_db_id",
+                    "created_at",
+                    "updated_at"]
+grouped_model_attributes = {
+        "basic" =>
+                ["id",
+                 "active",
+                 "first_name",
+                 "last_name",
+                 "email"],
+        "status" =>
+                ["job_role",
+                 "phone",
+                 "notes",
+                 "external_db_id",
+                 "created_at",
+                 "updated_at"],
+}
+-%>
