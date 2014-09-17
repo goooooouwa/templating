@@ -1,0 +1,52 @@
+### routes
+resource :item_type do
+  resource :property, only: [:index, :show]
+  resource :item_types_property, only: [:new]
+end
+
+resource :property, only: [:edit, :update, :destroy]
+resource :item_types_property, only: [:create]
+
+### controller actions
+# GET /item_types/1/properties
+def index
+  if params[:item_type_id]
+    @parent = KitBase::ItemType.find params[:item_type_id]
+    @properties = @parent.properties
+  else
+    @properties = KitBase::Property.all
+  end
+end
+
+# GET /item_types/1/properties/2
+def show
+  if params[:item_type_id]
+    @parent = KitBase::ItemType.find params[:item_type_id]
+  end
+end
+
+# GET /item_types/1/item_types_properties/new
+def new
+  @item_type = KitBase::ItemType.find params[:item_type_id]
+  @item_types_property = KitBase::ItemTypesProperty.new( item_type: @item_type, property: KitBase::Property.new )
+end
+
+# POST /item_types_properties
+def create
+  @item_types_property = KitBase::ItemTypesProperty.new(item_types_property_params)
+  # if save
+  redirect_to [@item_types_property.item_type, @item_types_property.property]
+end
+
+# GET /properties/2/edit
+def edit
+end
+
+# PUT /properties/2
+def update
+end
+
+# DELETE /properties/2
+def destroy
+  redirect_to root_path
+end
