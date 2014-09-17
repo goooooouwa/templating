@@ -1,11 +1,11 @@
 ### routes
-resource :item_type do
-  resource :property, only: [:index, :show]
-  resource :item_types_property, only: [:new]
+resources :item_types do
+  resources :properties, only: [:index, :show]
+  resources :item_types_properties, only: [:new]
 end
 
-resource :property, only: [:edit, :update, :destroy]
-resource :item_types_property, only: [:create]
+resources :properties, only: [:edit, :update, :destroy]
+resources :item_types_properties, only: [:create]
 
 ### controller actions
 # GET /item_types/1/properties
@@ -49,4 +49,11 @@ end
 # DELETE /properties/2
 def destroy
   redirect_to root_path
+end
+
+params.require(:item_types_property).permit(:item_type_id, :property_id, property_attributes: [:id, :name, :html5_input_type_id, :_destroy])
+
+###model
+class ItemTypesProperty < ActiveRecord::Base
+    accepts_nested_attributes_for :property
 end
