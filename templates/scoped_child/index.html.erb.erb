@@ -51,7 +51,7 @@
                 <%% @<%= bs %>.each do |<%= b %>| %>
                 <tr>
                 <%- b_attributes.each do |attribute_name| -%>
-                  <td><%%= @<%= b %>.<%= attribute_name %> %></td>
+                  <td><%%= <%= b %>.<%= attribute_name %> %></td>
                 <%- end -%>
                   <td>
                     <%%= link_to <%= a %>_<%= b %>_path(<%= b %>, { <%= a %>_id: @parent}) do %>
@@ -64,10 +64,10 @@
                 <%% @<%= bs %>.each do |<%= b %>| %>
                 <tr>
                 <%- b_attributes.each do |attribute_name| -%>
-                  <td><%%= @<%= b %>.<%= attribute_name %> %></td>
+                  <td><%%= <%= b %>.<%= attribute_name %> %></td>
                 <%- end -%>
                   <td>
-                    <%%= link_to 'Delete', @<%= b %>, :method => 'delete', class: "btn btn-danger", title: "Delete <%= B %>", data: { toggle:"tooltip", placement:"bottom" }, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
+                    <%%= link_to 'Delete', <%= b %>, :method => 'delete', class: "btn btn-danger", title: "Delete <%= B %>", data: { toggle:"tooltip", placement:"bottom" }, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) } %>
                   </td>
                 </tr>
                 <%% end %>
