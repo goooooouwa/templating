@@ -3,11 +3,16 @@ a = "<%= parent %>"
 A = "<%= parent.camelize %>"
 A_ = "<%= parent.capitalize %>"
 as = "<%= parent.pluralize %>"
+a_name = "<%= parent_name_attribute %>"
 
 b = "<%= child %>"
 B = "<%= child.camelize %>"
 B_ = "<%= child.capitalize %>"
 bs = "<%= child.pluralize %>"
+b_attributes = <%= child_attributes.inspect %>
+b_attribute_groups = {
+  "basic" => <%= child_attributes.inspect %>
+}
 
 NB = "<%= "#{namespace}::#{child}".camelize %>"
 
