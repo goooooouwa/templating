@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-xs-3">
           <%% case @parent.class.name when <%= NA %>.name %>
-            <h3 style="margin-top: auto;"><%%= @parent.name.capitalize %></h3>
+            <h3 style="margin-top: auto;"><%%= @parent.<%= a_name %>.capitalize %></h3>
           <%% else %>
             <h3 style="margin-top: auto;"><%%= model_class.model_name.human.pluralize.titleize %></h3>
           <%% end %>
