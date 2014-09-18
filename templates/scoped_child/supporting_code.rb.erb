@@ -1,11 +1,11 @@
 ### routes
 resources :<%= as %> do
   resources :<%= bs %>, only: [:index, :show]
-  resources :<%= as %>_<%= bs %>, only: [:new]
+  resources :<%= as %>_<%= bs %>, only: [:index, :new]
 end
 
 resources :<%= bs %>, only: [:show, :edit, :update, :destroy]
-resources :<%= as %>_<%= bs %>, only: [:create]
+resources :<%= as %>_<%= bs %>, only: [:show, :create]
 
 ### controller actions
 # GET /<%= as %>/1/<%= bs %>
