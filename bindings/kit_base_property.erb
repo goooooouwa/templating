@@ -1,14 +1,7 @@
 <%-
-namespace = "KitBase"
-parent_model_class = "ItemType"
-parent_model_name_attribute = "name"
-model_class = "Property"
-model_instance = "property"
-model_attributes = ["id", "name", "field_type_id", "created_at", "updated_at"]
-grouped_model_attributes = {
-  "basic" =>
-      ["id", "name"],
-  "status" =>
-      ["field_type_id", "created_at", "updated_at"],
-}
+    namespace = "kit_base"
+    parent = "item_type"
+    parent_name_attribute = "name"
+    child = "property"
+    child_attributes = ["id", "name", "field_type_id", "created_at", "updated_at"]
 -%>
