@@ -33,7 +33,6 @@ end
 
 # POST /<%= as %>_<%= bs %>
 def create
-  @<%= as %>_<%= b %> = <%= N %>::<%= As %><%= B %>.new(<%= as %>_<%= b %>_params)
   # if save
   redirect_to [@<%= as %>_<%= b %>.<%= a %>, @<%= as %>_<%= b %>.<%= b %>]
 end
