@@ -16,7 +16,7 @@ b_attribute_groups = {
   "basic" => <%= child_attributes.inspect %>
 }
 
-NA = "<%= "#{namespace}::#{parent}".camelize %>"
-NB = "<%= "#{namespace}::#{child}".camelize %>"
+NA = "<%= "#{namespace.camelize}::#{parent.camelize}" %>"
+NB = "<%= "#{namespace.camelize}::#{child.camelize}" %>"
 
 -%>
