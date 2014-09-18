@@ -4,7 +4,7 @@ resources :<%= as %> do
   resources :<%= as %>_<%= bs %>, only: [:new]
 end
 
-resources :<%= bs %>, only: [:edit, :update, :destroy]
+resources :<%= bs %>, only: [:index, :edit, :update, :destroy]
 resources :<%= as %>_<%= bs %>, only: [:create]
 
 ### controller actions
@@ -51,7 +51,7 @@ def destroy
   redirect_to root_path
 end
 
-params.require(:<%= as %>_<%= b %>).permit(:<%= a %>_id, :<%= b %>_id, <%= b %>_attributes: [:id, :name, :html5_input_type_id, :_destroy])
+params.require(:<%= as %>_<%= b %>).permit(:<%= a %>_id, :<%= b %>_id, <%= b %>_attributes: <%= b_attributes %>)
 
 ###model
 class <%= As %><%= B %> < ActiveRecord::Base
