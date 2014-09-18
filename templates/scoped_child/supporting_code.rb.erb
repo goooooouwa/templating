@@ -1,59 +1,59 @@
 ### routes
-resources :item_types do
-  resources :properties, only: [:index, :show]
-  resources :item_types_properties, only: [:new]
+resources :<%= as %> do
+  resources :<%= bs %>, only: [:index, :show]
+  resources :<%= as %>_<%= bs %>, only: [:new]
 end
 
-resources :properties, only: [:edit, :update, :destroy]
-resources :item_types_properties, only: [:create]
+resources :<%= bs %>, only: [:edit, :update, :destroy]
+resources :<%= as %>_<%= bs %>, only: [:create]
 
 ### controller actions
-# GET /item_types/1/properties
+# GET /<%= as %>/1/<%= bs %>
 def index
-  if params[:item_type_id]
-    @parent = KitBase::ItemType.find params[:item_type_id]
-    @properties = @parent.properties
+  if params[:<%= a %>_id]
+    @parent = <%= NA %>.find params[:<%= a %>_id]
+    @<%= bs %> = @parent.<%= bs %>
   else
-    @properties = KitBase::Property.all
+    @<%= bs %> = <%= NB %>.all
   end
 end
 
-# GET /item_types/1/properties/2
+# GET /<%= as %>/1/<%= bs %>/2
 def show
-  if params[:item_type_id]
-    @parent = KitBase::ItemType.find params[:item_type_id]
+  if params[:<%= a %>_id]
+    @parent = <%= NA %>.find params[:<%= a %>_id]
   end
 end
 
-# GET /item_types/1/item_types_properties/new
+# GET /<%= as %>/1/<%= as %>_<%= bs %>/new
 def new
-  @item_type = KitBase::ItemType.find params[:item_type_id]
-  @item_types_property = KitBase::ItemTypesProperty.new( item_type: @item_type, property: KitBase::Property.new )
+  @<%= a %> = <%= NA %>.find params[:<%= a %>_id]
+  @<%= as %>_<%= b %> = <%= N %>::<%= As %><%= B %>.new( <%= a %>: @<%= a %>, <%= b %>: <%= NB %>.new )
 end
 
-# POST /item_types_properties
+# POST /<%= as %>_<%= bs %>
 def create
-  @item_types_property = KitBase::ItemTypesProperty.new(item_types_property_params)
+  @<%= as %>_<%= b %> = <%= N %>::<%= As %><%= B %>.new(<%= as %>_<%= b %>_params)
   # if save
-  redirect_to [@item_types_property.item_type, @item_types_property.property]
+  redirect_to [@<%= as %>_<%= b %>.<%= a %>, @<%= as %>_<%= b %>.<%= b %>]
 end
 
-# GET /properties/2/edit
+# GET /<%= bs %>/2/edit
 def edit
 end
 
-# PUT /properties/2
+# PUT /<%= bs %>/2
 def update
 end
 
-# DELETE /properties/2
+# DELETE /<%= bs %>/2
 def destroy
   redirect_to root_path
 end
 
-params.require(:item_types_property).permit(:item_type_id, :property_id, property_attributes: [:id, :name, :html5_input_type_id, :_destroy])
+params.require(:<%= as %>_<%= b %>).permit(:<%= a %>_id, :<%= b %>_id, <%= b %>_attributes: [:id, :name, :html5_input_type_id, :_destroy])
 
 ###model
-class ItemTypesProperty < ActiveRecord::Base
-    accepts_nested_attributes_for :property
+class <%= As %><%= B %> < ActiveRecord::Base
+    accepts_nested_attributes_for :<%= b %>
 end
