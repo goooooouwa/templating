@@ -1,0 +1,25 @@
+<%%-
+n = "<%= namespace %>"
+N = "<%= namespace.camelize %>"
+
+a = "<%= parent %>"
+A = "<%= parent.camelize %>"
+A_ = "<%= parent.capitalize %>"
+as = "<%= parent.pluralize %>"
+As = "<%= parent.pluralize.camelize %>"
+a_name = "<%= parent_name_attribute %>"
+
+b = "<%= child %>"
+B = "<%= child.camelize %>"
+B_ = "<%= child.capitalize %>"
+bs = "<%= child.pluralize %>"
+Bs = "<%= child.pluralize.camelize %>"
+b_attributes = <%= child_attributes.inspect %>
+b_attribute_groups = {
+  "Basic" => <%= child_attributes.inspect %>
+}
+
+NA = "<%= "#{namespace.camelize}::#{parent.camelize}" %>"
+NB = "<%= "#{namespace.camelize}::#{child.camelize}" %>"
+
+-%>

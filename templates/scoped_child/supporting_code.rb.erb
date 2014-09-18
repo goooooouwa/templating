@@ -1,0 +1,58 @@
+### routes
+resources :<%= as %> do
+  resources :<%= bs %>, only: [:index, :show]
+  resources :<%= as %>_<%= bs %>, only: [:index, :new]
+end
+
+resources :<%= bs %>, only: [:show, :edit, :update, :destroy]
+resources :<%= as %>_<%= bs %>, only: [:show, :create]
+
+### controller actions
+# GET /<%= as %>/1/<%= bs %>
+def index
+  if params[:<%= a %>_id]
+    @parent = <%= NA %>.find params[:<%= a %>_id]
+    @<%= bs %> = @parent.<%= bs %>
+  else
+    @<%= bs %> = <%= NB %>.all
+  end
+end
+
+# GET /<%= as %>/1/<%= bs %>/2
+def show
+  if params[:<%= a %>_id]
+    @parent = <%= NA %>.find params[:<%= a %>_id]
+  end
+end
+
+# GET /<%= as %>/1/<%= as %>_<%= bs %>/new
+def new
+  @<%= a %> = <%= NA %>.find params[:<%= a %>_id]
+  @<%= as %>_<%= b %> = <%= N %>::<%= As %><%= B %>.new( <%= a %>: @<%= a %>, <%= b %>: <%= NB %>.new )
+end
+
+# POST /<%= as %>_<%= bs %>
+def create
+  # if save
+  redirect_to [@<%= as %>_<%= b %>.<%= a %>, @<%= as %>_<%= b %>.<%= b %>]
+end
+
+# GET /<%= bs %>/2/edit
+def edit
+end
+
+# PUT /<%= bs %>/2
+def update
+end
+
+# DELETE /<%= bs %>/2
+def destroy
+  redirect_to root_path
+end
+
+params.require(:<%= as %>_<%= b %>).permit(:<%= a %>_id, :<%= b %>_id, <%= b %>_attributes: <%= b_attributes %>)
+
+###model
+class <%= As %><%= B %> < ActiveRecord::Base
+    accepts_nested_attributes_for :<%= b %>
+end
