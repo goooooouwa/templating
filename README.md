@@ -22,7 +22,7 @@ $ bash ./runner.sh kit_chase_item parent /destination/path/
 # 1. translate binding into template-friendly middleware
 $ erb -r 'active_support/core_ext/string' -T - bindings/kit_base_item.erb templates/middleware.erb.erb > middleware/kit_base_item.erb
 # 2. generate results from template with middleware
-$ erb -T - middleware/kit_base_item.erb templates/scoped_child/index.html.erb.erb > results/result.html.erb
+$ erb -r 'active_support/core_ext/string' -T - middleware/kit_base_item.erb templates/scoped_child/index.html.erb.erb > results/result.html.erb
 ```
 
 ##Middleware explaination

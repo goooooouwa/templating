@@ -3,27 +3,27 @@
     <div class="col-xs-3 col-xs-offset-1" id="myScrollspy">
       <ul class="nav nav-pills nav-stacked" data-spy="affix">
         <li><a href="#window">Top</a></li>
-        <%- grouped_model_attributes.each do |group_label, attributes| -%>
-        <li><a href="#<%= group_label %>"><%= group_label.capitalize %></a></li>
+        <%- b_attribute_groups.each do |group_label, attributes| -%>
+        <li><a href="#<%= group_label %>"><%= group_label %></a></li>
         <%- end -%>
         <li><a href="#end">End</a></li>
       </ul>
     </div>
     <div class="col-xs-4">
-      <%%= form_for <%= "@#{model_instance}" %>, :html => { :class => 'form-horizontal' } do |f| %>
-        <%% if <%= "@#{model_instance}" %>.errors.any? %>
+      <%%= form_for @<%= b %>, :html => { :class => 'form-horizontal' } do |f| %>
+        <%% if @<%= b %>.errors.any? %>
           <div id="error_explanation">
-            <h2><%%= pluralize(<%= "@#{model_instance}" %>.errors.count, "error") %> prohibited this <%= model_class.humanize %> from being saved:</h2>
+            <h2><%%= pluralize(@<%= b %>.errors.count, "error") %> prohibited this <%= B %> from being saved:</h2>
 
             <ul>
-            <%% <%= "@#{model_instance}" %>.errors.full_messages.each do |msg| %>
-              <li><%%= msg %></li>
-            <%% end %>
+              <%% @<%= b %>.errors.full_messages.each do |msg| %>
+                <li><%%= msg %></li>
+              <%% end %>
             </ul>
           </div>
         <%% end %>
 
-        <%- grouped_model_attributes.each do |group_label, attributes| -%>
+        <%- b_attribute_groups.each do |group_label, attributes| -%>
         <div id="<%= group_label %>">
           <div class="form-group">
             <h1><small><%= group_label.capitalize %></small></h1>
@@ -33,7 +33,7 @@
             <%%= f.label :<%= attribute %>, :class => 'control-label' %>
             <div class="controls">
             <%-  if attribute =~ /^(\w*)_id$/ -%>
-              <%%= f.collection_select(:<%= attribute %>, <%= "#{namespace}/#{/^(\w*)_id$/.match(attribute)[1]}".camelize %>.all, :id, :name, {}, { :class => 'form-control' }) %>
+              <%%= f.collection_select(:<%= attribute %>, <%= /^(\w*)_id$/.match(attribute)[1].camelize %>.all, :id, :name, {}, { :class => 'form-control' }) %>
             <%-  elsif attribute =~ /^(\w*)_at$/ -%>
               <%%= f.datetime_local_field :<%= attribute %>, :class => 'form-control' %>
             <%- else -%>
