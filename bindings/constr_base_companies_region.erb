@@ -1,21 +1,7 @@
 <%-
-namespace = "ConstrBase"
-parent_model_class = "Company"
-parent_model_name_attribute = "name"
-model_class = "CompaniesRegion"
-model_instance = "companies_region"
-model_attributes = ["id",
-    "company_id",
-    "region_id",
-    "created_at",
-    "updated_at"]
-grouped_model_attributes = {
-  "basic" =>
-      ["id",
-      "company_id",
-      "region_id"],
-  "status" =>
-      ["created_at",
-       "updated_at"],
-}
+    namespace = "constr_base"
+    parent = "company"
+    parent_name_attribute = "name"
+    child = "companies_region"
+    child_attributes = ["id", "company_id", "region_id", "created_at", "updated_at"]
 -%>
