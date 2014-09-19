@@ -1,0 +1,43 @@
+### routes
+resources :<%= as %> do
+  resources :<%= bs %>, shallow: true
+end
+resources :<%= bs %>
+
+### controller actions
+# GET /<%= as %>/1/<%= bs %>
+def index
+  if params[:<%= a %>_id]
+    @parent = <%= NA %>.find params[:<%= a %>_id]
+    @<%= bs %> = @parent.<%= bs %>
+  else
+    @<%= bs %> = <%= NB %>.all
+  end
+end
+
+# GET /<%= as %>/1/<%= bs %>/2
+def show
+end
+
+# GET /<%= as %>/1/<%= bs %>/new
+def new
+  @parent = <%= NA %>.find params[:<%= a %>_id] if params[:<%= a %>_id]
+  @<%= b %> = <%= NB %>.new
+end
+
+# POST /<%= bs %>
+def create
+end
+
+# GET /<%= bs %>/2/edit
+def edit
+end
+
+# PUT /<%= bs %>/2
+def update
+end
+
+# DELETE /<%= bs %>/2
+def destroy
+  redirect_to @<%= b %>.<%= a %>
+end
