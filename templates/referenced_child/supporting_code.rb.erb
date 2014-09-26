@@ -1,6 +1,6 @@
 ### routes
 resources :<%= as %> do
-  resources :<%= bs %>, shallow: true
+  resources :<%= bs %>, only: [:index, :new]
 end
 resources :<%= bs %>
 
@@ -15,14 +15,14 @@ def index
   end
 end
 
-# GET /<%= as %>/1/<%= bs %>/2
+# GET /<%= bs %>/2
 def show
 end
 
 # GET /<%= as %>/1/<%= bs %>/new
 def new
-  @parent = <%= NA %>.find params[:<%= a %>_id] if params[:<%= a %>_id]
-  @<%= b %> = <%= NB %>.new
+  @<%= a %> = <%= NA %>.find params[:<%= a %>_id]
+  @<%= b %> = <%= NB %>.new <%= a %>: @<%= a %>
 end
 
 # POST /<%= bs %>
