@@ -9,17 +9,17 @@ as = "documents"
 As = "Documents"
 a_name = "filename"
 
-b = "document_group"
-B = "DocumentGroup"
-B_ = "Document_group"
-bs = "document_groups"
-Bs = "DocumentGroups"
-b_attributes = ["id", "name", "description", "created_at", "updated_at"]
+b = "document_groups_document"
+B = "DocumentGroupsDocument"
+B_ = "Document_groups_document"
+bs = "document_groups_documents"
+Bs = "DocumentGroupsDocuments"
+b_attributes = ["id", "document_group_id", "document_id", "created_at", "updated_at"]
 b_attribute_groups = {
-  "Basic" => ["id", "name", "description", "created_at", "updated_at"]
+  "Basic" => ["id", "document_group_id", "document_id", "created_at", "updated_at"]
 }
 
 NA = "TenderBase::Document"
-NB = "TenderBase::DocumentGroup"
+NB = "TenderBase::DocumentGroupsDocument"
 
 -%>
